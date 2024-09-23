@@ -120,7 +120,7 @@ export default function Home() {
         <p style={{fontSize: 30}}>DRESS CODE: <b>Elegante</b></p>
       </div>
 
-      <div className="party">
+      <div className="party rsvp">
         <p className='title'>CONFIRMACIÓN DE ASISTENCIA</p>
         <p>En este día tan imporatante, espero poder</p>
         <p>contar con tu presencia.</p>

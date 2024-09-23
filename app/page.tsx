@@ -53,11 +53,8 @@ export default function Home() {
   return (
     <div className="invitation-page">
       <div className="banner">
-        <img src="giuli1.jpeg" />
-        <span>
-          GIULIANA <p>MIS 15 AÑOS</p>
-          <img src="flowers.png" alt="Flores" />
-        </span>
+        <span>GIULIANA</span>
+        <p>MIS 15 AÑOS</p>
       </div>
 
       <div className="countdown-container">

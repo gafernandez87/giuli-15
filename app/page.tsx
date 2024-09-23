@@ -121,7 +121,7 @@ export default function Home() {
       </div>
 
       <div className="party rsvp">
-        <p className='title'>CONFIRMACIÓN DE ASISTENCIA</p>
+        <p className='title' style={{textAlign: 'center'}}>CONFIRMACIÓN DE ASISTENCIA</p>
         <p>En este día tan imporatante, espero poder</p>
         <p>contar con tu presencia.</p>
         <button onClick={rsvp}>¡Confirmá tu asistencia!</button>

@@ -110,8 +110,8 @@ export default function Home() {
 
       <div className="gallery">
         <img src="giuli4.jpeg"></img>
+        <img src="giuli6.jpeg"></img>
         <img src="giuli3.jpeg"></img>
-        <img src="giuli5.jpeg"></img>
         <img src="giuli2.jpeg"></img>
       </div>
 

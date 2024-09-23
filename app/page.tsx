@@ -75,9 +75,8 @@ export default function Home() {
       <div className="party">
         <p className="emoji">🎊</p>
         <p className='title'>FIESTA</p>
-        <p>Sábado 25 de noviembre de 21:00 a 05:00 hs</p>
-        <p>Salón Campo Norte, Ruta E53, Córdoba.</p>
-        <p>Clickeá en el botón de abajo y encontrá las indicaciones para llegar,</p>
+        <p>Sábado 05 de Octubre de 21:00 a 05:00 hs</p>
+        <p>Salón Recepciones Dubai, Av. Int. Carlos Ratti 2195, Ituzaingo.</p>
         <p>¡nos vemos!😉</p>
         <img className="confetti" src="confetti.gif"></img>
 

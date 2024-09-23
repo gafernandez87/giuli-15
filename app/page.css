@@ -156,6 +156,20 @@ button {
     text-align: center;
 }
 
+.gift {
+    background-color: #9ec6b6;
+}
+
+.gift p:not(.emoji) {
+    font-size: 20px;
+}
+
+.gift button { 
+    background-color: white;
+    color: #9ec6b6;
+    margin-top: 2rem;
+}
+
 @keyframes beat {
     0% {
     transform: scale(1);

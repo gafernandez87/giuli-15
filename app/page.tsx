@@ -103,6 +103,19 @@ export default function Home() {
         <p>Seguime en mi cuenta de Instagram y etiquetame en tus fotos y videos.</p>
         <button>VER INSTAGRAM</button>
       </div>
+
+      <div className="countdown-container gift">
+        <p className="emoji">🎁</p>
+        <p>El mejor regalo es que vengas,</p>
+        <p>pero si deseás regalarme algo, podés colaborar con mis sueños y anhelos✨</p>
+        <p>¡Muchas gracias!</p>
+        <button>HACER UN REGALO</button>
+      </div>
+
+      <div className="countdown-container">
+        <p style={{fontSize: 25}}>¡Gracias por acompañarme en este momento tan importante!</p>
+      </div>
+
     </div>
   );
 }

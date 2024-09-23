@@ -5,8 +5,15 @@ import { useEffect, useState } from "react";
 
 const EVENT_DATE = '2024-10-05T00:00:00';
 
+type TimeLeft = {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
 export default function Home() {
-  const [timeLeft, setTimeLeft] = useState<any>({days: 0, hours: 0, minutes: 0, seconds: 0});
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({days: 0, hours: 0, minutes: 0, seconds: 0});
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -20,7 +27,12 @@ export default function Home() {
 
   function calculateTimeLeft() {
     const difference = +new Date(EVENT_DATE) - +new Date();
-    let timeLeft = {};
+    let timeLeft: TimeLeft = {
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
 
     if (difference > 0) {
       timeLeft = {

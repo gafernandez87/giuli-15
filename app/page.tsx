@@ -56,6 +56,10 @@ export default function Home() {
     window.open('https://www.instagram.com/giuu.svariatii/', '_blank');
   }
 
+  const rsvp = () => {
+    window.open('https://forms.gle/cVY3E8jgPVuQeAGg6', '_blank');
+  }
+
   useEffect(() => {
     setIsClient(true);
     const timer = setInterval(() => {
@@ -84,11 +88,11 @@ export default function Home() {
         <div className="countdown">
           <div className="countdown-item">{timeLeft.days}<span>Días</span></div>
           <div className="countdown-item">:</div>
-          <div className="countdown-item">{timeLeft.hours}<span>HS</span></div>
+          <div className="countdown-item">{timeLeft.hours}<span>Hs</span></div>
           <div className="countdown-item">:</div>
-          <div className="countdown-item">{timeLeft.minutes}<span>MIN</span></div>
+          <div className="countdown-item">{timeLeft.minutes}<span>Min</span></div>
           <div className="countdown-item">:</div>
-          <div className="countdown-item">{timeLeft.seconds}<span>SEG</span></div>
+          <div className="countdown-item">{timeLeft.seconds}<span>Seg</span></div>
         </div>
       </div>
 
@@ -116,6 +120,13 @@ export default function Home() {
         <p style={{fontSize: 30}}>DRESS CODE: <b>Elegante</b></p>
       </div>
 
+      <div className="party">
+        <p className='title'>CONFIRMACIÓN DE ASISTENCIA</p>
+        <p>En este día tan imporatante, espero poder</p>
+        <p>contar con tu presencia.</p>
+        <button onClick={rsvp}>¡Confirmá tu asistencia!</button>
+      </div>
+
       <div className="ig">
         <img className="emoji" src="icono-instagram.svg"></img>
         <span>@giuu.svariatii</span>
@@ -140,14 +151,12 @@ export default function Home() {
         <div className='giftModal'>
           <h2>Datos Bancarios</h2>
           <p>Nombre del Titular: Giuliana Svariati</p>
-          <p>CBU: 12345623561</p>
-          <p>Alias: agenda.la.fecha</p>
-          <p>DNI: 32200552</p>
-          <p>Banco Galicia</p>
+          <p>CBU: 0000003100058596069192</p>
+          <p>Alias: Giu.svariati</p>
 
           <h2>Buzón de regalos</h2>
           <p>Si deseás hacer tu regalo personalmente,</p>
-          <p>El día del evento habrá un buzón para dejar obsequios.</p>
+          <p>el día del evento habrá un buzón para dejar obsequios.</p>
         </div>
       </Modal>
     </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -13,6 +13,16 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+export const viewport: Viewport = {
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  width: 'device-width',
+  height: 'device-height',
+  viewportFit: 'cover',
+};
+
 export const metadata: Metadata = {
   title: "15 Giuliana",
   description: "Festejemos los 15 juntos!",
@@ -25,9 +35,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

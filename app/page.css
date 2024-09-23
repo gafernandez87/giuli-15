@@ -13,7 +13,7 @@ body {
     radial-gradient(at 92% 17%, hsla(315,74%,60%,1) 0px, transparent 50%),
     radial-gradient(at 43% 88%, hsla(274,85%,78%,1) 0px, transparent 50%),
     radial-gradient(at 93% 86%, hsla(128,69%,75%,1) 0px, transparent 50%);
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto;
 }
 

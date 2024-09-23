@@ -1,101 +1,99 @@
-import Image from "next/image";
+"use client";
+
+import './page.css';
+import { useEffect, useState } from "react";
+
+const EVENT_DATE = '2024-10-05T00:00:00';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [timeLeft, setTimeLeft] = useState<any>({days: 0, hours: 0, minutes: 0, seconds: 0});
+  const [isClient, setIsClient] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    setIsClient(true);
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  function calculateTimeLeft() {
+    const difference = +new Date(EVENT_DATE) - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+
+    return timeLeft;
+  }
+
+  if (!isClient) {
+    return null;
+  }
+
+  return (
+    <div className="invitation-page">
+      <div className="banner">
+        <img src="giuli1.jpeg" />
+        <span>
+          GIULIANA <p>MIS 15 AÑOS</p>
+          <img src="flowers.png" alt="Flores" />
+        </span>
+      </div>
+
+      <div className="countdown-container">
+        <div className="countdown-message">
+          ¡Te espero para festejar este gran momento de mi vida!
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="countdown">
+          <div className="countdown-item">{timeLeft.days}<span>Días</span></div>
+          <div className="countdown-item">:</div>
+          <div className="countdown-item">{timeLeft.hours}<span>HS</span></div>
+          <div className="countdown-item">:</div>
+          <div className="countdown-item">{timeLeft.minutes}<span>MIN</span></div>
+          <div className="countdown-item">:</div>
+          <div className="countdown-item">{timeLeft.seconds}<span>SEG</span></div>
+        </div>
+      </div>
+
+      <div className="party">
+        <p className="emoji">🎊</p>
+        <p className='title'>FIESTA</p>
+        <p>Sábado 25 de noviembre de 21:00 a 05:00 hs</p>
+        <p>Salón Campo Norte, Ruta E53, Córdoba.</p>
+        <p>Clickeá en el botón de abajo y encontrá las indicaciones para llegar,</p>
+        <p>¡nos vemos!😉</p>
+        <img className="confetti" src="confetti.gif"></img>
+
+        <button>CÓMO LLEGAR</button>
+      </div>
+
+      <div className="gallery">
+        <img src="giuli2.jpeg"></img>
+        <img src="giuli3.jpeg"></img>
+        <img src="giuli3.jpeg"></img>
+        <img src="giuli2.jpeg"></img>
+      </div>
+
+      <div className="countdown-container dresscode">
+        <p className="emoji">👗👔</p>
+        <p style={{fontSize: 30}}>DRESS CODE: <b>Elegante</b></p>
+      </div>
+
+      <div className="ig">
+        <img className="emoji" src="icono-instagram.svg"></img>
+        <span>@giuu.svariatii</span>
+        <p>¡Preparate para esta gran fiesta!</p>
+        <p>Seguime en mi cuenta de Instagram y etiquetame en tus fotos y videos.</p>
+        <button>VER INSTAGRAM</button>
+      </div>
     </div>
   );
 }

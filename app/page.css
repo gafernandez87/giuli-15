@@ -1,0 +1,177 @@
+* {
+    font-family: 'EB Garamond', serif;
+    line-height: 1.2;
+}
+
+button { 
+    border-radius: 25px;
+    padding: 10px 30px;
+    background-color: #9ec6b6;
+    color: white;
+    width: 60%;
+    margin: 1rem 0;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner img {
+    filter: blur(1px);
+}
+
+.banner span{
+    position: absolute;
+    top: 40px;
+    left: 100px;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+
+    font-family: 'Dancing Script', cursive;
+}
+
+.banner span img {
+    filter: invert(1);
+    width: 150px;
+    opacity: .3;
+    position: absolute;
+    left: 25px;
+    top: -30px;
+}
+
+.banner p {
+    font-size: 30px;
+    font-family: 'Dancing Script', cursive;
+}
+
+.countdown-container {
+    background-color: #f8bbd0;
+    padding: 55px 30px;
+    text-align: center;
+    color: white;
+}
+
+.countdown-message {
+    font-size: 21px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    gap: 2rem;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 32px;
+}
+
+.countdown-item span {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.party {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 5px;
+}
+
+.emoji {
+    font-size: 90px;
+    animation: beat 1.5s infinite;
+    margin-top: 2rem;
+    margin-bottom: 20px;
+}
+
+.confetti {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.party .title {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.party button {
+    margin: 20px 0;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    padding: 5px;
+}
+
+.gallery img { 
+    justify-self: start;
+    border-radius: 10px;
+}
+.gallery img:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+.dresscode .emoji {
+    font-size: 70px;
+    margin-top: 1rem;
+    margin-bottom: 20px;
+}
+
+.ig {
+    background-image: url('/ig-background.jpg');
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 50px 20px 80px 20px;
+}
+
+.ig img.emoji {
+    width: 100px;
+    left: 35%;
+    margin: 0;
+}
+
+.ig span {
+    color: white;
+    font-size: 33px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.ig p {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    width: 95%;
+    text-align: center;
+}
+
+@keyframes beat {
+    0% {
+    transform: scale(1);
+    }
+    50% {
+    transform: scale(1.1);
+    }
+    100% {
+    transform: scale(1);
+    }
+}

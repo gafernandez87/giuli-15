@@ -181,3 +181,22 @@ button {
     transform: scale(1);
     }
 }
+
+
+.giftModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px;
+    text-align: left;
+}
+
+.giftModal h2{
+    color: #9ec6b6;
+    font-size: 30px;
+}
+
+.giftModal p{
+    text-align: center;
+}

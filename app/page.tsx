@@ -1,5 +1,6 @@
 "use client";
 
+import Modal from './modal';
 import './page.css';
 import { useEffect, useState } from "react";
 
@@ -12,9 +13,48 @@ type TimeLeft = {
   seconds: number;
 }
 
+function calculateTimeLeft() {
+  const difference = +new Date(EVENT_DATE) - +new Date();
+  let timeLeft: TimeLeft = {
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  };
+
+  if (difference > 0) {
+    timeLeft = {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60),
+    };
+  }
+
+  return timeLeft;
+}
+
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({days: 0, hours: 0, minutes: 0, seconds: 0});
   const [isClient, setIsClient] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const openMap = () => {
+    window.open('https://maps.app.goo.gl/2ruJTRvwW2nLRdZG7', '_blank');
+  }
+
+  const openIg = () => {
+    window.open('https://www.instagram.com/giuu.svariatii/', '_blank');
+  }
 
   useEffect(() => {
     setIsClient(true);
@@ -25,26 +65,6 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  function calculateTimeLeft() {
-    const difference = +new Date(EVENT_DATE) - +new Date();
-    let timeLeft: TimeLeft = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
-
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
-
-    return timeLeft;
-  }
 
   if (!isClient) {
     return null;
@@ -76,11 +96,12 @@ export default function Home() {
         <p className="emoji">🎊</p>
         <p className='title'>FIESTA</p>
         <p>Sábado 05 de Octubre de 21:00 a 05:00 hs</p>
-        <p>Salón Recepciones Dubai, Av. Int. Carlos Ratti 2195, Ituzaingo.</p>
+        <p>Salón Recepciones Dubai</p> 
+        <p>Av. Int. Carlos Ratti 2195, Ituzaingo.</p>
         <p>¡nos vemos!😉</p>
         <img className="confetti" src="confetti.gif"></img>
 
-        <button>CÓMO LLEGAR</button>
+        <button onClick={openMap}>CÓMO LLEGAR</button>
       </div>
 
       <div className="gallery">
@@ -100,7 +121,7 @@ export default function Home() {
         <span>@giuu.svariatii</span>
         <p>¡Preparate para esta gran fiesta!</p>
         <p>Seguime en mi cuenta de Instagram y etiquetame en tus fotos y videos.</p>
-        <button>VER INSTAGRAM</button>
+        <button onClick={openIg}>VER INSTAGRAM</button>
       </div>
 
       <div className="countdown-container gift">
@@ -108,13 +129,27 @@ export default function Home() {
         <p>El mejor regalo es que vengas,</p>
         <p>pero si deseás regalarme algo, podés colaborar con mis sueños y anhelos✨</p>
         <p>¡Muchas gracias!</p>
-        <button>HACER UN REGALO</button>
+        <button onClick={handleOpenModal}>HACER UN REGALO</button>
       </div>
 
       <div className="countdown-container">
         <p style={{fontSize: 25}}>¡Gracias por acompañarme en este momento tan importante!</p>
       </div>
 
+      <Modal show={showModal} onClose={handleCloseModal}>
+        <div className='giftModal'>
+          <h2>Datos Bancarios</h2>
+          <p>Nombre del Titular: Giuliana Svariati</p>
+          <p>CBU: 12345623561</p>
+          <p>Alias: agenda.la.fecha</p>
+          <p>DNI: 32200552</p>
+          <p>Banco Galicia</p>
+
+          <h2>Buzón de regalos</h2>
+          <p>Si deseás hacer tu regalo personalmente,</p>
+          <p>El día del evento habrá un buzón para dejar obsequios.</p>
+        </div>
+      </Modal>
     </div>
   );
 }
